@@ -36,7 +36,7 @@ Set the other rule's settings as you like.
 Set the new rule id on ___Store > Configuration > Dadolun > Newsletter Coupon > Used Sales Rule___.
 
 ## Integrations
-You can create, delete or update subscriber informations with a new module linked with Dadolun_NewsletterCoupon.
+You can create, delete or update subscriber informations on external platforms with a new module linked with Dadolun_NewsletterCoupon.
 Requirements:
 - if you've installed a 3rd party module that send newsletter email remember to disable magento's from ___Store > Configuration > Customers > Newsletter > Subscription Options > Disable Newsletter * Sending___ config path.
 - extend __Dadolun\NewsletterCoupon\Model\AbstractNewsletterIntegration__ class on your module adding logic on methods.
