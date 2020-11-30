@@ -2,7 +2,7 @@
 
 ## Features
 This module add features to Magento newsletter subscription
-- generate a coupon for each subscription (must be an "AUTO" salesrule coupon type setted by config)
+- generate a coupon for each subscription (must be a "SPECIFIC" coupon type salesrule with "Use Auto Generation" enabled)
 - send coupon informations to the subscribed user (extending magento newsletter email template)
 - controls each coupon expiration. You can change default configuration at ___Store > Configuration > Dadolun > Newsletter Coupon > Coupon Expiration Expression___ config path.
 - adds graft for integrations with email marketing platforms
