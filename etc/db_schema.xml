@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+/**
+ * @category    Magento 2
+ * @package     Dadolun_NewsletterCoupon
+ * @copyright   Copyright (c) 2020 Dadolun (https://github.com/dadolun95)
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="newsletter_subscriber_coupon" resource="default" comment="Newsletter subscriber coupon">
+        <column xsi:type="int"
+                name="entity_id"
+                padding="10"
+                unsigned="true"
+                nullable="false"
+                identity="true"
+                comment="Entity ID"
+        />
+        <column xsi:type="int"
+                name="subscriber_id"
+                padding="10"
+                unsigned="true"
+                nullable="false"
+                comment="Newsletter Subscriber ID"
+        />
+        <column xsi:type="varchar"
+                name="subscriber_email"
+                nullable="false"
+                length="150"
+                comment="Newsletter Subscriber Email"
+        />
+        <column xsi:type="int"
+                name="coupon_id"
+                padding="10"
+                unsigned="true"
+                nullable="true"
+                comment="Newsletter Subscription Generated Coupon ID"
+        />
+        <column xsi:type="timestamp"
+                name="created_at"
+                on_update="false"
+                nullable="true"
+                default="CURRENT_TIMESTAMP"
+                comment="Creation Time"
+        />
+        <column xsi:type="boolean"
+                name="is_enabled"
+                nullable="false"
+                comment="Is Subscription Coupon Enabled"
+                default="true"
+        />
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="NEWSLETTER_SUBSCRIBER_COUPON_SUBSCRIBER_ITEM_FK"
+                    table="newsletter_subscriber_coupon"
+                    column="subscriber_id"
+                    referenceTable="newsletter_subscriber"
+                    referenceColumn="subscriber_id"
+                    onDelete="CASCADE"
+        />
+        <constraint xsi:type="foreign" referenceId="NEWSLETTER_SUBSCRIBER_COUPON_SALESRULE_COUPON_ITEM_FK"
+                    table="newsletter_subscriber_coupon"
+                    column="coupon_id"
+                    referenceTable="salesrule_coupon"
+                    referenceColumn="coupon_id"
+                    onDelete="SET NULL"
+        />
+    </table>
+</schema>

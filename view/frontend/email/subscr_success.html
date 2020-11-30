@@ -1,0 +1,26 @@
+<!--
+/**
+ * @category    Magento 2
+ * @package     Dadolun_NewsletterCoupon
+ * @copyright   Copyright (c) 2020 Dadolun (https://github.com/dadolun95)
+ */
+-->
+<!--@subject {{trans "Newsletter subscription success"}} @-->
+<!--@vars {
+"template config_path=\"design\/email\/footer_template\"":"Email Footer Template",
+"template config_path=\"design\/email\/header_template\"":"Email Header Template",
+"var coupon_code":"Coupon Code"
+} @-->
+
+{{template config_path="design/email/header_template"}}
+
+{{trans "You have been successfully subscribed to our newsletter."}}
+{{depend coupon_code}}
+<p>
+    {{trans "You've earned a coupon with this code: %coupon_code" coupon_code=$coupon_code}}<br/>
+    {{trans "The coupon will expire in date %coupon_expiration." coupon_expiration=$coupon_expiration_date}}
+</p>
+{{/depend}}
+
+
+{{template config_path="design/email/footer_template"}}

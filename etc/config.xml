@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category    Magento 2
+ * @package     Dadolun_NewsletterCoupon
+ * @copyright   Copyright (c) 2020 Dadolun (https://github.com/dadolun95)
+ */
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <dadolun_newsletter>
+            <configuration>
+                <expiration_delay_expression>+30days</expiration_delay_expression>
+            </configuration>
+        </dadolun_newsletter>
+        <newsletter>
+            <subscription>
+                <success_coupon_email_template>newsletter_subscription_success_coupon_email_template</success_coupon_email_template>
+            </subscription>
+        </newsletter>
+    </default>
+</config>

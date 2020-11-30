@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+/**
+ * @category    Magento 2
+ * @package     Dadolun_NewsletterCoupon
+ * @copyright   Copyright (c) 2020 Dadolun (https://github.com/dadolun95)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <!-- API REFERENCE -->
+    <preference for="Dadolun\NewsletterCoupon\Api\SubscriberInformationRepositoryInterface"
+                type="Dadolun\NewsletterCoupon\Model\SubscriberInformationRepository"/>
+    <preference for="Dadolun\NewsletterCoupon\Api\Data\SubscriberInformationInterface"
+                type="Dadolun\NewsletterCoupon\Model\SubscriberInformation"/>
+    <preference for="Dadolun\NewsletterCoupon\Api\SubscriberInformationResourceInterface"
+                type="Dadolun\NewsletterCoupon\Model\ResourceModel\SubscriberInformation"/>
+
+    <!-- PLUGINS -->
+    <type name="Magento\Newsletter\Model\Subscriber">
+        <plugin name="dadolun_save_subscriber_information"
+                type="Dadolun\NewsletterCoupon\Plugin\SaveSubscriberData"/>
+    </type>
+    <type name="Magento\Checkout\Controller\Cart\CouponPost">
+        <plugin name="dadolun_check_newsletter_coupon"
+                type="Dadolun\NewsletterCoupon\Plugin\CheckNewsletterCoupon"/>
+    </type>
+    <type name="Magento\Newsletter\Model\Subscriber">
+        <plugin name="dadolun_disable_newsletter_email"
+                type="Dadolun\NewsletterCoupon\Plugin\UpdateNewsletterEmailSending"/>
+    </type>
+
+</config>

@@ -1,0 +1,18 @@
+{
+    "version": "1.0.0",
+    "name": "dadolun95/magento2-newsletter-coupon",
+    "description": "Magento2 Newsletter Coupon Generator",
+    "type": "magento2-module",
+    "license": "OSL-3.0",
+    "authors": [
+        {
+            "email": "dadolun@gmail.com",
+            "name": "Davide Lunardon"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "magento/framework": "*",
+        "magento/module-newsletter": "*"
+    }
+}

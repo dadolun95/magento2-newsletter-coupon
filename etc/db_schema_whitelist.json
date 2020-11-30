@@ -1,0 +1,17 @@
+{
+    "newsletter_subscriber_coupon": {
+        "column": {
+            "entity_id": true,
+            "subscriber_id": true,
+            "subscriber_email": true,
+            "coupon_id": true,
+            "created_at": true,
+            "is_enabled": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "NEWSLETTER_SUBSCRIBER_COUPON_SUBSCRIBER_ITEM_FK": true,
+            "NEWSLETTER_SUBSCRIBER_COUPON_SALESRULE_COUPON_ITEM_FK": true
+        }
+    }
+}

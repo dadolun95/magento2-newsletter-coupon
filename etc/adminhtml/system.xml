@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+/**
+ * @category    Magento 2
+ * @package     Dadolun_NewsletterCoupon
+ * @copyright   Copyright (c) 2020 Dadolun (https://github.com/dadolun95)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="dadolun" translate="label" sortOrder="10">
+            <label>Dadolun</label>
+        </tab>
+        <section id="dadolun_newsletter" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>NewsletterCoupon</label>
+            <tab>dadolun</tab>
+            <resource>Dadolun_NewsletterCoupon::system_config</resource>
+            <group id="configuration" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Configuration</label>
+                <field id="coupon_generation_enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Coupon Generation</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="salesrule_id" translate="label,comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Used Sales Rule</label>
+                    <comment>Allowed Sales Rules must have "Specific" coupon type and "Use Auto Generation" setted</comment>
+                    <source_model>Dadolun\NewsletterCoupon\Model\Config\Source\AutoTypeSalesRule</source_model>
+                </field>
+                <field id="expiration_delay_expression" translate="label,comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Coupon Expiration Delay</label>
+                    <comment>Insert Coupon Delay Expiration Expression: https://www.php.net/manual/en/datetime.formats.relative.php</comment>
+                    <backend_model>Dadolun\NewsletterCoupon\Model\Config\Backend\DateTimeFormat</backend_model>
+                </field>
+            </group>
+        </section>
+        <section id="newsletter">
+            <tab>customer</tab>
+            <group id="subscription">
+                <field id="success_coupon_email_identity" translate="label" type="select" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Success Coupon Email Sender</label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Identity</source_model>
+                </field>
+                <field id="disable_confirmation_request_email" translate="label" type="select" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Disable Newsletter Confirmation Request Email Sending</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="disable_confirmation_success_email" translate="label" type="select" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Disable Newsletter Confirmation Success Email Sending</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="disable_unsubscription_email" translate="label" type="select" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Disable Newsletter Unsubscription Email Sending</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
