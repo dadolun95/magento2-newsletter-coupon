@@ -4,15 +4,32 @@
     "description": "Magento2 Newsletter Coupon Generator",
     "type": "magento2-module",
     "license": "OSL-3.0",
-    "authors": [
-        {
-            "email": "dadolun@gmail.com",
-            "name": "Davide Lunardon"
-        }
+        "keywords": [
+        "php",
+        "magento",
+        "magento2",
+        "newsletter",
+        "coupon",
+        "promotions"
+    ],
+    "require": {
+        "magento/framework": "^103.0"
+    },
+    "type": "magento2-module",
+    "license": [
+        "OSL-3.0"
     ],
     "minimum-stability": "stable",
     "require": {
         "magento/framework": "*",
         "magento/module-newsletter": "*"
+    }
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Dadolun\\NewsletterCoupon\\": ""
+        }
     }
 }
