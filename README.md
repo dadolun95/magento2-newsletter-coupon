@@ -27,7 +27,7 @@ php bin/magento module:enable Dadolun_NewsletterCoupon
 php bin/magento setup:upgrade
 ```
 ##### SOURCE CODE
-If you choose to add the module from source code instead of using composer you need to add this module code on your app/code folder.
+If you choose to add the module from source code instead of using composer you need to add module's files on your app/code folder.
 Then enable it and update the database:
 ```
 php bin/magento module:enable Dadolun_NewsletterCoupon
