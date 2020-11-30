@@ -23,7 +23,7 @@
     "require": {
         "magento/framework": "*",
         "magento/module-newsletter": "*"
-    }
+    },
     "autoload": {
         "files": [
             "registration.php"
