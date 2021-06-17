@@ -12,8 +12,7 @@
         "promotions"
     ],
     "require": {
-        "magento/framework": "^103.0",
-        "magento/module-newsletter": "*"
+        "magento/framework": "103.0.*"
     },
     "license": [
         "OSL-3.0"
