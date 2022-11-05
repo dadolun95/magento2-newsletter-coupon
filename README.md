@@ -1,4 +1,4 @@
-# Dadolun_NewsletterCoupon <img src="https://avatars.githubusercontent.com/u/168457?s=40&v=4" alt="magento" />
+# Dadolun_NewsletterCoupon module for Magento 2 <img src="https://avatars.githubusercontent.com/u/168457?s=40&v=4" alt="magento" />
 
 ## Features
 This module add features to Magento newsletter subscription
