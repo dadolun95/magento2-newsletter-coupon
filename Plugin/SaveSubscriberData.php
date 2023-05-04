@@ -117,7 +117,7 @@ class SaveSubscriberData
 
         if ($subject->getStatus() === Subscriber::STATUS_UNSUBSCRIBED || $subject->getStatus() === Subscriber::STATUS_NOT_ACTIVE) {
             $subscriberInformation = $this->subscriberInformationRepository->getBySubscriberId($subject->getSubscriberId());
-            if ($subscriberInformation !== null) {
+            if ($subscriberInformation->getId() !== null) {
                 $subscriberInformation->setIsEnabled(false);
                 $this->subscriberInformationRepository->save($subscriberInformation);
             }
