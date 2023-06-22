@@ -78,44 +78,47 @@ class CheckNewsletterCoupon
      */
     public function aroundExecute(\Magento\Checkout\Controller\Cart\CouponPost $subject, callable $proceed)
     {
-        $couponCode = $subject->getRequest()->getParam('remove') == 1
-            ? ''
-            : trim($subject->getRequest()->getParam('coupon_code'));
+        if ($this->configurationHelper->getUsedSalesRuleId() && $this->configurationHelper->isCouponGenerationEnabled()) {
 
-        $coupon = $this->couponFactory->create();
-        $coupon->load($couponCode, 'code');
+            $couponCode = $subject->getRequest()->getParam('remove') == 1
+                ? ''
+                : trim($subject->getRequest()->getParam('coupon_code'));
 
-        if ($coupon !== null && $coupon->getCouponId()) {
+            $coupon = $this->couponFactory->create();
+            $coupon->load($couponCode, 'code');
 
-            $subscriberInformation = $this->subscriberInformationRepository->getByCouponId($coupon->getCouponId());
+            if ($coupon !== null && $coupon->getCouponId()) {
 
-            if ($subscriberInformation->getId()) {
+                $subscriberInformation = $this->subscriberInformationRepository->getByCouponId($coupon->getCouponId());
 
-                if ($subscriberInformation->getIsEnabled() !== "1") {
-                    $this->messageManager->addErrorMessage(
-                        __(
-                            'The coupon "%1" can\'t be utilized: subscription is not valid or coupon was already used.',
-                            $this->escaper->escapeHtml($couponCode)
-                        )
-                    );
-                    $subject->getRequest()->setParam('coupon_code', '');
-                }
+                if ($subscriberInformation->getId()) {
 
-                $createdAt = $subscriberInformation->getCreatedAt();
-                $delayExpression = $this->configurationHelper->getDelayExpression();
-                if ($delayExpression === null) {
-                    $delayExpression = self::DEFAULT_DELAY_EXPRESSION;
-                }
-                $expirationDate = strtotime($createdAt . $delayExpression);
-                $today = strtotime(date("Y-m-d"));
-                if ($expirationDate < $today) {
-                    $this->messageManager->addErrorMessage(
-                        __(
-                            'The coupon "%1" is expired.',
-                            $this->escaper->escapeHtml($couponCode)
-                        )
-                    );
-                    $subject->getRequest()->setParam('coupon_code', '');
+                    if ($subscriberInformation->getIsEnabled() !== "1") {
+                        $this->messageManager->addErrorMessage(
+                            __(
+                                'The coupon "%1" can\'t be utilized: subscription is not valid or coupon was already used.',
+                                $this->escaper->escapeHtml($couponCode)
+                            )
+                        );
+                        $subject->getRequest()->setParam('coupon_code', '');
+                    }
+
+                    $createdAt = $subscriberInformation->getCreatedAt();
+                    $delayExpression = $this->configurationHelper->getDelayExpression();
+                    if ($delayExpression === null) {
+                        $delayExpression = self::DEFAULT_DELAY_EXPRESSION;
+                    }
+                    $expirationDate = strtotime($createdAt . $delayExpression);
+                    $today = strtotime(date("Y-m-d"));
+                    if ($expirationDate < $today) {
+                        $this->messageManager->addErrorMessage(
+                            __(
+                                'The coupon "%1" is expired.',
+                                $this->escaper->escapeHtml($couponCode)
+                            )
+                        );
+                        $subject->getRequest()->setParam('coupon_code', '');
+                    }
                 }
             }
         }
