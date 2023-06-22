@@ -89,7 +89,7 @@ class CheckNewsletterCoupon
 
             $subscriberInformation = $this->subscriberInformationRepository->getByCouponId($coupon->getCouponId());
 
-            if ($subscriberInformation != null) {
+            if ($subscriberInformation->getId()) {
 
                 if ($subscriberInformation->getIsEnabled() !== "1") {
                     $this->messageManager->addErrorMessage(

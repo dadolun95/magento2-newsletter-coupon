@@ -122,17 +122,17 @@ class SubscriberInformationRepository implements SubscriberInformationRepository
 
 
     /**
-     * @param $subscriberId
+     * @param $couponId
      * @return SubscriberInformation|null
      */
-    public function getByCouponId($subscriberId)
+    public function getByCouponId($couponId)
     {
         /**
          * @var \Dadolun\NewsletterCoupon\Model\ResourceModel\SubscriberInformation\Collection $subscriberInformationCollection
          */
         $subscriberInformationCollection = $this->subscriberInformationCollectionFactory->create();
         return $subscriberInformationCollection
-            ->addFieldToFilter('coupon_id', $subscriberId)
+            ->addFieldToFilter('coupon_id', $couponId)
             ->getFirstItem();
     }
 

@@ -10,14 +10,7 @@ This module add features to Magento newsletter subscription
 ## Installation
 You can install this module adding it on app/code folder or with composer.
 ##### COMPOSER
-You need to update your composer.json "repositories" node:
-```
-{
-    "type": "vcs",
-    "url":  "git@github.com:dadolun95/magento2-newsletter-coupon.git"
-}
-```
-Then execute this command:
+You need to require the package throught composer:
 ```
 composer require dadolun95/magento2-newsletter-coupon
 ```
