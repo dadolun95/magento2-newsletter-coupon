@@ -1,5 +1,11 @@
 # Dadolun_NewsletterCoupon module for Magento 2 <img src="https://avatars.githubusercontent.com/u/168457?s=40&v=4" alt="magento" />
 
+## ATTENTION!
+
+This module is no longer maintained. 
+NewsletterCoupon is now available as a Mage-OS module and moved [here](https://github.com/mage-os-lab/module-newsletter-coupon)
+
+
 ## Features
 This module add features to Magento newsletter subscription
 - generate a coupon for each subscription (must be a "SPECIFIC" coupon type salesrule with "Use Auto Generation" enabled)
